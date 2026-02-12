@@ -276,4 +276,4 @@ This project demonstrates:
 ## 🌐 Live Demo
 
 Check out the app in action on GitHub Pages:
-[🔗 Open demo](https://<твоє_ім’я>.github.io/<ім’я_репозиторію>/)
+[🔗 Open demo]()
