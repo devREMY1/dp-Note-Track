@@ -204,36 +204,62 @@ const startTracking = () => {
 			start: Date.now(),
 			end: null,
 		});
-		save();
 		timerInterval = setInterval(updateActiveTimer, 1000);
+		save();
+		render();
 	}
-	save();
 };
 
 const stopTracking = () => {
 	if (!appState.isTracking) return;
+
 	const project = appState.projects.find(
-		p => p.id === appState.currentProjectId,
+		p => p.id === appState.activeTrackingId,
 	);
-	if (project) {
-		const lastSession = project.sessions[project.sessions.length - 1];
-		lastSession.end = Date.now();
 
-		const sessionDuration = Math.floor(
-			(lastSession.end - lastSession.start) / 1000,
-		);
-
-		project.totalTimer += sessionDuration;
-
+	if (!project) {
 		appState.isTracking = false;
 		appState.activeTrackingId = null;
-
 		clearInterval(timerInterval);
 		timerInterval = null;
-		document.getElementById('active-timer').textContent = '00:00:00';
 		save();
 		render();
+		return;
 	}
+
+	const activeSession = project.sessions.find(s => s.end === null);
+
+	if (!activeSession) {
+		appState.isTracking = false;
+		appState.activeTrackingId = null;
+		clearInterval(timerInterval);
+		timerInterval = null;
+		save();
+		render();
+		return;
+	}
+
+	activeSession.end = Date.now();
+
+	const sessionDuration = Math.floor(
+		(activeSession.end - activeSession.start) / 1000,
+	);
+
+	project.totalTimer += sessionDuration;
+
+	appState.isTracking = false;
+	appState.activeTrackingId = null;
+
+	clearInterval(timerInterval);
+	timerInterval = null;
+
+	const activeTimerEl = document.getElementById('active-timer');
+	if (activeTimerEl) {
+		activeTimerEl.textContent = '00:00:00';
+	}
+
+	save();
+	render();
 };
 
 const updateActiveTimer = () => {
@@ -245,8 +271,9 @@ const updateActiveTimer = () => {
 
 	if (!project) return;
 
-	const lastSession = project.sessions[project.sessions.length - 1];
-	const totalSeconds = Math.floor((Date.now() - lastSession.start) / 1000);
+	const activeSession = project.sessions.find(s => s.end === null);
+	if (!activeSession) return;
+	const totalSeconds = Math.floor((Date.now() - activeSession.start) / 1000);
 
 	const hours = Math.floor(totalSeconds / 3600);
 	const min = Math.floor((totalSeconds % 3600) / 60);
@@ -401,7 +428,13 @@ sessionOutput.addEventListener('click', event => {
 
 	if (event.target.tagName === 'BUTTON') {
 		const index = event.target.dataset.index;
-
+		if (appState.isTracking) {
+			const session = project.sessions[index];
+			if (session && session.end === null) {
+				alert('Stop the timer before deleting active session');
+				return;
+			}
+		}
 		project.sessions.splice(index, 1);
 
 		recalculateTotal(project);
