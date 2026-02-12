@@ -1,4 +1,6 @@
-# 🚀 dp ~ Note & Track
+# <p>
+  <img src="./src/img/subtract.svg" width="50px" />
+</p>dp ~ Note & Track
 
 > Minimal productivity dashboard built with **Vanilla JavaScript**  
 > Notes • Weather • Telegram Bot Integration • Multi-Project Time Tracker • Advanced Statistics  
