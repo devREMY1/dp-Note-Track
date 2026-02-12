@@ -1,0 +1,193 @@
+/* ===== RESET ===== */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+li {
+	list-style: none;
+	color: rgba(212, 212, 212, 0.7490196078);
+	font-weight: 550;
+	gap: 5px;
+	display: flex;
+}
+
+svg {
+	fill: rgba(255, 255, 255, 0.7);
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #303030;
+	color: rgba(255, 255, 255, 0.8);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 25px 30px;
+	background: #202020;
+	border-radius: 0 0 25px 25px;
+}
+
+/* ===== INPUTS ===== */
+input {
+	background: none;
+	border: none;
+	font-weight: 550;
+	color: rgba(255, 255, 255, 0.562);
+	font-size: 18px;
+}
+
+input:focus {
+	outline: none;
+}
+
+#todo-input {
+	max-width: 10 0px;
+}
+
+.weather__search-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+#tg-token-input {
+	text-align: center;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: 10px;
+	padding: 10px 0;
+	max-width: 170px;
+	font-size: 16px;
+}
+
+#wth-search-input {
+	text-align: center;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: 10px;
+	padding: 10px 0;
+	max-width: 160px;
+	font-size: 16px;
+}
+
+.telegram-input {
+	display: none;
+}
+
+#sumbit {
+	display: none;
+}
+
+#telegram-submit {
+	display: none;
+}
+
+#wth-src-submit {
+	display: none;
+}
+
+#tg-wth-btn {
+	display: none;
+}
+
+#submit,
+#telegram-submit,
+#wth-src-submit {
+	display: none;
+	cursor: pointer;
+	padding: 5px 15px;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 6px;
+}
+
+/* ===== MAIN ===== */
+.main {
+	flex: 1;
+	padding: 40px 40px 70px 40px;
+}
+
+#todo-output {
+	list-style: none;
+}
+
+#todo-output li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+	margin: 10px 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.delete-btn {
+	background: none;
+	border: none;
+	color: rgba(255, 0, 0, 0.274);
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	padding-left: 5px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+	background: none;
+	border: none;
+	color: rgba(255, 255, 255, 0.7);
+	cursor: pointer;
+}
+
+#clear-tasks {
+	font-size: 18px;
+	font-weight: 550;
+	margin-top: 20px;
+	width: 100%;
+	text-align: end;
+}
+
+/* ===== TRACKER LINK ===== */
+.tracker-btn {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: none;
+	padding: 5px 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.footer li {
+	color: rgba(170, 170, 170, 0.835);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

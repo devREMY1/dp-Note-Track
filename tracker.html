@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>dp > Track</title>
+		<meta
+			name="description"
+			content="Minimal project and time tracking app. Track sessions, control focus, and analyze total working time."
+		/>
+		<meta
+			name="keywords"
+			content="time tracker, project tracker, productivity app, focus timer, work sessions"
+		/>
+		<meta name="author" content="devREMY" />
+
+		<meta name="theme-color" content="#111111" />
+		<meta name="color-scheme" content="dark" />
+
+		<link rel="icon" href="./src/img/Subtract.svg" sizes="any" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/./src/img/Subtract.svg"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./src/img/Subtract.svg"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="./src/img/Subtract.svg"
+		/>
+
+		<link rel="stylesheet" href="./src/css/track.css" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="tracker-container">
+				<form onsubmit="return createProject();">
+					<input
+						type="text"
+						id="input-proj"
+						class="tracker-container__input-proj"
+						placeholder="New project"
+					/>
+					<input type="submit" value="Create" id="input-proj-sub" />
+				</form>
+			</div>
+			<div class="project-select__container">
+				<div class="project-select" id="projectSelect">
+					<div class="project-select__current" id="projectCurrent">
+						Select a project!
+					</div>
+
+					<div class="project-select__dropdown" id="projectDropdown"></div>
+				</div>
+				<button
+					class="edit-btn"
+					id="edit-project"
+					aria-label="Edit project name"
+				>
+					<svg
+						width="25"
+						height="25"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25z"
+							fill="currentColor"
+						/>
+						<path
+							d="M20.7 7.04c.39-.39.39-1.02 0-1.41L18.37 3.3a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.82-1.84z"
+							fill="currentColor"
+						/>
+					</svg>
+				</button>
+				<button class="delete" id="delete-project">✖</button>
+			</div>
+			<div class="timer-container">
+				<p id="active-timer">00:00:00</p>
+				<button id="start-btn" class="icon-btn start">
+					<svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true">
+						<path d="M8 5v14l11-7z"></path>
+					</svg>
+				</button>
+				<button id="stop-btn" class="icon-btn stop">
+					<svg viewBox="0 0 24 26" width="25" height="25" aria-hidden="true">
+						<rect x="6" y="7" width="12" height="12"></rect>
+					</svg>
+				</button>
+			</div>
+		</header>
+		<main class="main">
+			<div class="wrapper">
+				<div class="sessions-container">
+					<div class="sessions-nav-container">
+						<input type="date" class="sessions-date-filter" id="date-filter" />
+						<div class="view-controls">
+							<button class="view-controls-day" id="view-day">Day</button>
+							<button class="view-controls-week" id="view-week">Week</button>
+							<button class="view-controls-month" id="view-month">Month</button>
+						</div>
+						<button id="add-session" class="sessions-nav-container-add-btn">
+							Create session
+						</button>
+					</div>
+					<div class="sessions-output" id="sessions-output"></div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="stats-container">
+				<div id="month-picker" class="month-picker"></div>
+				<ol class="stats">
+					<li>
+						All Projects:
+						<p id="stats-global"></p>
+					</li>
+					<li>
+						Total:
+						<p class="total-time-output" id="stats-total"></p>
+					</li>
+					<li>
+						Month:
+						<p id="stats-month"></p>
+					</li>
+					<li>
+						Week:
+						<p id="stats-week"></p>
+					</li>
+
+					<li>
+						Today:
+						<p id="stats-today"></p>
+					</li>
+				</ol>
+			</div>
+		</footer>
+		<script src="./src/js/track.js"></script>
+	</body>
+</html>

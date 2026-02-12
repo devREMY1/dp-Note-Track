@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>dp > Note</title>
+		<meta
+			name="description"
+			content="Minimal project and time tracking app. Track sessions, control focus, and analyze total working time."
+		/>
+		<meta
+			name="keywords"
+			content="time tracker, project tracker, productivity app, focus timer, work sessions"
+		/>
+		<meta name="author" content="devREMY" />
+
+		<meta name="theme-color" content="#111111" />
+		<meta name="color-scheme" content="dark" />
+
+		<link rel="icon" href="./src/img/Subtract.svg" sizes="any" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/./src/img/Subtract.svg"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./src/img/Subtract.svg"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="./src/img/Subtract.svg"
+		/>
+
+		<link rel="stylesheet" href="./src/css/style.css" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="inputContainer">
+				<form
+					class="inputContainer-form"
+					id="form"
+					onsubmit="return todoListInput(appState);"
+				>
+					<input type="text" id="todo-input" placeholder="New note" />
+					<input type="submit" value="Add" id="sumbit" />
+				</form>
+			</div>
+
+			<div class="weather__search-container">
+				<form onsubmit="return weatherSearch();">
+					<input
+						type="text"
+						class="weather__search-input"
+						id="wth-search-input"
+						placeholder="Find weather"
+					/>
+					<input type="submit" id="wth-src-submit" value="Search" />
+				</form>
+				<form onsubmit="return saveTelegramToken();">
+					<input
+						class="tg-token-input"
+						placeholder="Telegram bot token"
+						type="password"
+						name="token-input"
+						id="tg-token-input"
+					/>
+					<input
+						style="display: none"
+						type="submit"
+						value="Save"
+						id="tg-token-submit"
+					/>
+				</form>
+				<button id="tg-wth-btn">☁️ Send weather</button>
+			</div>
+
+			<div class="telegram-input">
+				<form
+					class="telegram-input__form"
+					id="telegram-form"
+					onsubmit="return telegramInput();"
+				>
+					<input
+						type="text"
+						id="telegram-input"
+						placeholder="Telegram message"
+					/>
+					<input type="submit" value="Send" id="telegram-submit" />
+				</form>
+			</div>
+			<a
+				class="tracker-btn"
+				href="./tracker.html"
+				target="_blank"
+				title="Tracker page"
+				><li class="tracker-item">
+					<svg width="16" height="16" viewBox="0 0 18 18">
+						<path
+							d="M8.001 8.948L8 9c0 .556.448 1 1 1h3c.556 0 1-.448 1-1 0-.556-.448-1-1-1h-2V4.003a1 1 0 10-2 0v4.894l.001.051zM9 18A9 9 0 109 0a9 9 0 000 18z"
+							fill-rule="evenodd"
+							class="tracker-icon"
+						></path>
+					</svg>
+					Tracker
+				</li></a
+			>
+		</header>
+		<main class="main">
+			<div class="wrapper">
+				<div class="todoContainer__wrapper">
+					<ul class="todoContainer" id="todo-output"></ul>
+					<button class="todoContainer__todoClearTasks" id="clear-tasks">
+						Clear all
+					</button>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<ul class="quote__list" id="quote-list">
+				<li class="quote__item" id="quote-text"></li>
+			</ul>
+
+			<li class="weather__list" id="weather"></li>
+		</footer>
+		<script src="./src/js/script.js"></script>
+	</body>
+</html>
