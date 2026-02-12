@@ -276,4 +276,4 @@ This project demonstrates:
 ## 🌐 Live Demo
 
 Check out the app in action on GitHub Pages:
-[🔗 Open demo]()
+[🔗 Open demo](https://devremy1.github.io/dp-Note-Track/)
